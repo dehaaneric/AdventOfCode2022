@@ -6,8 +6,9 @@
         public Elf(List<int> calories)
         {
             Calories = calories;
+            SumCalories = calories.Sum();
         }
 
-        public int SumCalories => Calories.Sum();
+        public int SumCalories { get; }
     }
 }

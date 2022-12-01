@@ -8,43 +8,32 @@ namespace AdventOfCode2022.ConsoleApp.Day1
 
         public Day1Tasks()
         {
-            PreloadElves();
-        }
-
-        private void PreloadElves()
-        {
             var stringsInput = GetInputDay1();
             _elves = CreateElves(stringsInput);
         }
 
-        public void ProcessTask1()
+        public int Task1HighestCalorieCount()
         {
-            var highestCalorieCount = _elves.Max(x => x.SumCalories);
-
-            Console.WriteLine($"How many total Calories is that Elf carrying? Answer: {highestCalorieCount}");
+            return _elves.Max(x => x.SumCalories);
         }
 
-        public void ProcessTask2()
+        public int Task2TopThreeTotalCalorieCount()
         {
-            var top3elvesWithHighestCalories = _elves.OrderByDescending(x => x.SumCalories).Skip(0).Take(3);
-            var totalCalories = top3elvesWithHighestCalories.Sum(x => x.SumCalories);
-
-            Console.WriteLine($"How many Calories are those Elves carrying in total? Answer: {totalCalories}");
+            var top3elvesWithHighestCalories = _elves.OrderByDescending(x => x.SumCalories).Skip(0).Take(3).ToArray();
+            return top3elvesWithHighestCalories.Sum(x => x.SumCalories);
         }
-
         private static List<Elf> CreateElves(string[] getInput)
         {
             Span<string> calorieLines = getInput.AsSpan();
 
-            List<Elf> elves = new List<Elf>();
+            List<Elf> elves = new();
 
             List<int>? calorieCollection = null;
             foreach (string calorie in calorieLines)
             {
                 if (!string.IsNullOrEmpty(calorie))
                 {
-                    if (calorieCollection == null)
-                        calorieCollection = new List<int>(10);
+                    calorieCollection ??= new List<int>(10);
 
                     calorieCollection.Add(int.Parse(calorie));
                 }
@@ -59,9 +48,9 @@ namespace AdventOfCode2022.ConsoleApp.Day1
             return elves;
         }
 
-        private string[] GetInputDay1()
+        private static string[] GetInputDay1()
         {
-            return File.ReadAllLines(@"Day1/Day1Input.txt");
+            return File.ReadAllLines("Day1/Day1Input.txt");
         }
     }
 }
