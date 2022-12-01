@@ -5,8 +5,8 @@ namespace AdventOfCode2022.ConsoleApp.Day1
     /*
         |    Method |     Mean |     Error |    StdDev |   Gen0 | Allocated |
         |---------- |---------:|----------:|----------:|-------:|----------:|
-        | Day1Task1 | 2.035 us | 0.0229 us | 0.0214 us |      - |      40 B |
-        | Day1Task2 | 5.505 us | 0.0899 us | 0.0797 us | 0.3586 |    4576 B |   
+        | Day1Task1 | 2.091 us | 0.0323 us | 0.0302 us |      - |      40 B |
+        | Day1Task2 | 1.838 us | 0.0352 us | 0.0329 us | 0.0954 |    1200 B |
     */
 
     [MemoryDiagnoser]

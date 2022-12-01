@@ -1,4 +1,5 @@
 ﻿using AdventOfCode2022.ConsoleApp.Shared;
+using System.Collections.Generic;
 
 namespace AdventOfCode2022.ConsoleApp.Day1
 {
@@ -19,9 +20,20 @@ namespace AdventOfCode2022.ConsoleApp.Day1
 
         public int Task2TopThreeTotalCalorieCount()
         {
-            var top3elvesWithHighestCalories = _elves.OrderByDescending(x => x.SumCalories).Skip(0).Take(3).ToArray();
-            return top3elvesWithHighestCalories.Sum(x => x.SumCalories);
+            List<int> allSummedCalories = _elves.Select(x => x.SumCalories).ToList();
+            allSummedCalories.Sort();
+
+            int maxItems = allSummedCalories.Count;
+
+            int total = 0;
+            for (int i = maxItems - 1; i >= (maxItems-3); i--)
+            {
+                total += allSummedCalories[i];
+            }
+            
+            return total;
         }
+
         private static List<Elf> CreateElves(string[] getInput)
         {
             Span<string> calorieLines = getInput.AsSpan();
