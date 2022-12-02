@@ -6,4 +6,11 @@
         Paper = 2,
         Scissors = 3
     }
+
+    public enum GameResult
+    {
+        Loose,
+        Draw,
+        Win
+    }
 }

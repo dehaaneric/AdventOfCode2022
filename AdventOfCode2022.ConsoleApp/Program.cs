@@ -14,9 +14,14 @@ namespace AdventOfCode2022.ConsoleApp
         private static void RunDay2()
         {
             Day2Tasks day2Tasks = new Day2Tasks();
-            int totalScore = day2Tasks.GetTotalScore();
+            int totalScore = day2Tasks.GetTotalScoreTask1();
 
-            Console.WriteLine($"What would your total score be if everything goes exactly according to your strategy guide?: {totalScore}");
+            Console.WriteLine($"Task 1 - What would your total score be if everything goes exactly according to your strategy guide?: {totalScore}");
+
+            int totalScoreTask2 = day2Tasks.GetTotalScoreTask2();
+
+            Console.WriteLine($"Task 2 - What would your total score be if everything goes exactly according to your strategy guide?: {totalScoreTask2}");
+
         }
 
         private static void RunDay1()
