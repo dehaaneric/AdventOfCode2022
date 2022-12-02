@@ -1,4 +1,5 @@
 ﻿using AdventOfCode2022.ConsoleApp.Day1;
+using AdventOfCode2022.ConsoleApp.Day2;
 using BenchmarkDotNet.Running;
 
 namespace AdventOfCode2022.ConsoleApp
@@ -6,6 +7,19 @@ namespace AdventOfCode2022.ConsoleApp
     internal class Program
     {
         static async Task Main(string[] args)
+        {
+            RunDay2();
+        }
+
+        private static void RunDay2()
+        {
+            Day2Tasks day2Tasks = new Day2Tasks();
+            int totalScore = day2Tasks.GetTotalScore();
+
+            Console.WriteLine($"What would your total score be if everything goes exactly according to your strategy guide?: {totalScore}");
+        }
+
+        private static void RunDay1()
         {
             //BenchmarkRunner.Run<Day1Benchmark>();
 
