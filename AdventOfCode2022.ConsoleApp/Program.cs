@@ -1,5 +1,6 @@
 ﻿using AdventOfCode2022.ConsoleApp.Day1;
 using AdventOfCode2022.ConsoleApp.Day2;
+using AdventOfCode2022.ConsoleApp.Day3;
 using BenchmarkDotNet.Running;
 
 namespace AdventOfCode2022.ConsoleApp
@@ -8,7 +9,18 @@ namespace AdventOfCode2022.ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            RunDay2();
+            RunDay3();
+        }
+
+        private static void RunDay3()
+        {
+            Day3Tasks day3Tasks = new Day3Tasks();
+            var task1Result = day3Tasks.GetTotalValueTask1();
+            Console.WriteLine($"Day 3 Task 1 - What is the sum of the priorities of those item types?: {task1Result}");
+
+            var task2Result = day3Tasks.GetTotalValueTask2();
+            Console.WriteLine($"Day 3 Task 2 - What is the sum of the priorities of those item types?: {task2Result}");
+
         }
 
         private static void RunDay2()
