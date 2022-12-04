@@ -1,7 +1,6 @@
 ﻿using AdventOfCode2022.ConsoleApp.Day1;
 using AdventOfCode2022.ConsoleApp.Day2;
 using AdventOfCode2022.ConsoleApp.Day3;
-using BenchmarkDotNet.Running;
 
 namespace AdventOfCode2022.ConsoleApp
 {

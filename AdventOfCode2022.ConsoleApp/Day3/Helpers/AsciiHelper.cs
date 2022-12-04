@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2022.ConsoleApp.Day3
+﻿namespace AdventOfCode2022.ConsoleApp.Day3.Helpers
 {
     public static class AsciiHelper
     {
@@ -9,9 +9,9 @@
             // 90  - Z  (52)
             // 97  - a  (1)
             // 122 - z  (26)
-            int value = (int)c;
+            int value = c;
 
-            if (Char.IsUpper(c))
+            if (char.IsUpper(c))
             {
                 return value - 38;
             }

@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2022.ConsoleApp.Day3
+﻿namespace AdventOfCode2022.ConsoleApp.Day3.Helpers
 {
     public static class RucksackHelper
     {

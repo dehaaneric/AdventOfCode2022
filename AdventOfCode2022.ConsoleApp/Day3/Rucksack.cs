@@ -1,6 +1,4 @@
-﻿using Microsoft.Diagnostics.Tracing.StackSources;
-
-namespace AdventOfCode2022.ConsoleApp.Day3
+﻿namespace AdventOfCode2022.ConsoleApp.Day3
 {
     public sealed class Rucksack
     {

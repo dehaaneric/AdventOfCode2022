@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AdventOfCode2022.ConsoleApp.Day3.Helpers;
 
 namespace AdventOfCode2022.ConsoleApp.Day3
 {
