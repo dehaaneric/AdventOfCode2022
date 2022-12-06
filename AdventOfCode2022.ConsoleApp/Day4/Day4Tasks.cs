@@ -12,13 +12,6 @@ namespace AdventOfCode2022.ConsoleApp.Day4
 
             foreach (var line in linesFromFile)
             {
-                /*  2-4,6-8
-                    2-3,4-5
-                    5-7,7-9
-                    2-8,3-7
-                    6-6,4-6
-                    2-6,4-8 */
-
                 var span = line.AsSpan();
                 int commaSplitIndex = span.IndexOf(',');
 
@@ -52,31 +45,22 @@ namespace AdventOfCode2022.ConsoleApp.Day4
 
         internal int Task1()
         {
-            List<ElvesTeam> elvesTeams = ParseInput();
-
-            var strategyToUse = new Task1FullyContainStrategy();
-
-            int counter = 0;
-            foreach (var elvesTeam in elvesTeams)
-            {
-                if (elvesTeam.GetHasOverlappingRange(strategyToUse))
-                {
-                    counter++;
-                }
-            }
-
-            return counter;
+            return GetCountByStrategy(new Task1FullyContainStrategy());
         }
+
         internal int Task2()
+        {
+            return GetCountByStrategy(new Task2PartiallyContainStrategy());
+        }
+
+        private static int GetCountByStrategy(BaseSectionStrategy baseSectionStrategy)
         {
             List<ElvesTeam> elvesTeams = ParseInput();
 
-            var strategyToUse = new Task2PartiallyContainStrategy();
-
             int counter = 0;
             foreach (var elvesTeam in elvesTeams)
             {
-                if (elvesTeam.GetHasOverlappingRange(strategyToUse))
+                if (elvesTeam.GetHasOverlappingRange(baseSectionStrategy))
                 {
                     counter++;
                 }
