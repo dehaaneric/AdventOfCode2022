@@ -8,7 +8,7 @@ namespace AdventOfCode2022.ConsoleApp.Day5
         {
             string[] input = GetInputDay4();
 
-            DockingAreaStack dockingAreaStack = ParseDockingAreaStack(input);
+            DockingArea dockingAreaStack = ParseDockingAreaStack(input);
             foreach (var instruction in ParseInstructions(input))
             {
                 dockingAreaStack.Move(instruction);
@@ -32,8 +32,7 @@ namespace AdventOfCode2022.ConsoleApp.Day5
 
             for (int index = emptyIndex; index < span.Length; index++)
             {
-                                          //  0    1   2  3  4 5
-                string line = span[index];// move 10 from 4 to 1
+                string line = span[index];
                 string[] items = line.Split(' ');
 
                 var moveInstruction = new MoveInstruction(ParseCharToInt(items[1]), ParseCharToInt(items[3]), ParseCharToInt(items[5]));
@@ -47,6 +46,7 @@ namespace AdventOfCode2022.ConsoleApp.Day5
         {
             return int.Parse(s);
         }
+
         private static int GetEmptyIndex(string[] input)
         {
             Span<string> span = input.AsSpan();
@@ -63,14 +63,14 @@ namespace AdventOfCode2022.ConsoleApp.Day5
             return -1;
         }
 
-        private static DockingAreaStack ParseDockingAreaStack(string[] input)
+        private static DockingArea ParseDockingAreaStack(string[] input)
         {
             // Get line break index
             int lanesLineIndex = GetEmptyIndex(input) - 1;
 
             // Move upwards
             List<int> lanes = input[lanesLineIndex].Trim().Split(' ').Where(x => !string.IsNullOrEmpty(x)).Select(int.Parse).ToList();
-            DockingAreaStack dockingArea = new(lanes.Count);
+            DockingArea dockingArea = new(lanes.Count);
 
             for (int i = lanesLineIndex; i-- > 0;)
             {

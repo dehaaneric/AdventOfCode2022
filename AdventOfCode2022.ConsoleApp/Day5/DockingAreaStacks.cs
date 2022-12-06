@@ -1,9 +1,9 @@
 ﻿namespace AdventOfCode2022.ConsoleApp.Day5
 {
-    public class DockingAreaStack
+    public class DockingArea
     {
-        private Dictionary<int, Stack<Crate>> _cratesPerLine;
-        public DockingAreaStack(int numberOfLanes)
+        private readonly Dictionary<int, Stack<Crate>> _cratesPerLine;
+        public DockingArea(int numberOfLanes)
         {
             _cratesPerLine = new Dictionary<int, Stack<Crate>>(numberOfLanes);
 
