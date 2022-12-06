@@ -1,6 +1,7 @@
 ﻿using AdventOfCode2022.ConsoleApp.Day1;
 using AdventOfCode2022.ConsoleApp.Day2;
 using AdventOfCode2022.ConsoleApp.Day3;
+using AdventOfCode2022.ConsoleApp.Day4;
 
 namespace AdventOfCode2022.ConsoleApp
 {
@@ -8,7 +9,18 @@ namespace AdventOfCode2022.ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            RunDay3();
+            RunDay4();
+        }
+
+        private static void RunDay4()
+        {
+            Day4Tasks day4Tasks = new Day4Tasks();
+
+            int task1Result = day4Tasks.Task1();
+            Console.WriteLine($"Day 4 Task 1 In how many assignment pairs does one range fully contain the other?: {task1Result}");
+
+            int task2Result = day4Tasks.Task2();
+            Console.WriteLine($"Day 4 Task 2 In how many assignment pairs do the ranges overlap?: {task2Result}");
         }
 
         private static void RunDay3()
