@@ -2,6 +2,7 @@
 using AdventOfCode2022.ConsoleApp.Day2;
 using AdventOfCode2022.ConsoleApp.Day3;
 using AdventOfCode2022.ConsoleApp.Day4;
+using AdventOfCode2022.ConsoleApp.Day5;
 
 namespace AdventOfCode2022.ConsoleApp
 {
@@ -9,7 +10,13 @@ namespace AdventOfCode2022.ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            RunDay4();
+            RunDay5();
+        }
+
+        private static void RunDay5()
+        {
+            string resultTask1 = Day5Tasks.Task1();
+            Console.WriteLine($"After the rearrangement procedure completes, what crate ends up on top of each stack?: \"{resultTask1}\"");
         }
 
         private static void RunDay4()
