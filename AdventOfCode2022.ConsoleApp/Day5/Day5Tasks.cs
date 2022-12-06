@@ -8,16 +8,16 @@ namespace AdventOfCode2022.ConsoleApp.Day5
         {
             string[] input = GetInputDay4();
 
-            DockingArea dockingArea = ParseDockingArea(input);
-            foreach(var instruction in ParseInstructions(input))
+            DockingAreaStack dockingAreaStack = ParseDockingAreaStack(input);
+            foreach (var instruction in ParseInstructions(input))
             {
-                dockingArea.Move(instruction);
+                dockingAreaStack.Move(instruction);
             }
 
             var sb = new StringBuilder();
-            foreach(var kvp in dockingArea.CratesPerLine)
+            foreach(var stack in dockingAreaStack.LinesOfCrates)
             {
-                sb.Append(kvp.Value.Last().Id);
+                sb.Append(stack.Peek().Id);
             }
 
             return sb.ToString();
@@ -63,14 +63,14 @@ namespace AdventOfCode2022.ConsoleApp.Day5
             return -1;
         }
 
-        private static DockingArea ParseDockingArea(string[] input)
+        private static DockingAreaStack ParseDockingAreaStack(string[] input)
         {
             // Get line break index
             int lanesLineIndex = GetEmptyIndex(input) - 1;
 
             // Move upwards
             List<int> lanes = input[lanesLineIndex].Trim().Split(' ').Where(x => !string.IsNullOrEmpty(x)).Select(int.Parse).ToList();
-            DockingArea dockingArea = new(lanes.Count);
+            DockingAreaStack dockingArea = new(lanes.Count);
 
             for (int i = lanesLineIndex; i-- > 0;)
             {
