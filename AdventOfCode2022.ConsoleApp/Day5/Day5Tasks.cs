@@ -23,6 +23,25 @@ namespace AdventOfCode2022.ConsoleApp.Day5
             return sb.ToString();
         }
 
+        public static string Task2()
+        {
+            string[] input = GetInputDay4();
+
+            DockingArea dockingAreaStack = ParseDockingAreaStack(input);
+            foreach (var instruction in ParseInstructions(input))
+            {
+                dockingAreaStack.MoveMultiple(instruction);
+            }
+
+            var sb = new StringBuilder();
+            foreach (var stack in dockingAreaStack.LinesOfCrates)
+            {
+                sb.Append(stack.Peek().Id);
+            }
+
+            return sb.ToString();
+        }
+
         private static List<MoveInstruction> ParseInstructions(string[] input)
         {
             List<MoveInstruction> moveInstructions = new(input.Length);

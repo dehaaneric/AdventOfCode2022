@@ -17,6 +17,9 @@ namespace AdventOfCode2022.ConsoleApp
         {
             string resultTask1 = Day5Tasks.Task1();
             Console.WriteLine($"After the rearrangement procedure completes, what crate ends up on top of each stack?: \"{resultTask1}\"");
+
+            string resultTask2 = Day5Tasks.Task2();
+            Console.WriteLine($"After the rearrangement procedure completes, what crate ends up on top of each stack?: \"{resultTask2}\"");
         }
 
         private static void RunDay4()
