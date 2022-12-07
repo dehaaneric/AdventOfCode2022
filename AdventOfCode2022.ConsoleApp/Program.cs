@@ -3,6 +3,7 @@ using AdventOfCode2022.ConsoleApp.Day2;
 using AdventOfCode2022.ConsoleApp.Day3;
 using AdventOfCode2022.ConsoleApp.Day4;
 using AdventOfCode2022.ConsoleApp.Day5;
+using AdventOfCode2022.ConsoleApp.Day6;
 
 namespace AdventOfCode2022.ConsoleApp
 {
@@ -10,7 +11,20 @@ namespace AdventOfCode2022.ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            RunDay5();
+            RunDay6();
+            Console.ReadLine();
+        }
+
+        private static void RunDay6()
+        {
+            Day6Tasks day6Tasks = new Day6Tasks();
+            
+            int task1Result = day6Tasks.Task1();
+            Console.WriteLine($"How many characters need to be processed before the first start-of-packet marker is detected?: \"{task1Result}\"");
+
+            int task2Result = day6Tasks.Task2();
+            Console.WriteLine($"How many characters need to be processed before the first start-of-message marker is detected?: \"{task2Result}\"");
+
         }
 
         private static void RunDay5()
