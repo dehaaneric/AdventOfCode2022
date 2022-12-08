@@ -4,6 +4,7 @@ using AdventOfCode2022.ConsoleApp.Day3;
 using AdventOfCode2022.ConsoleApp.Day4;
 using AdventOfCode2022.ConsoleApp.Day5;
 using AdventOfCode2022.ConsoleApp.Day6;
+using AdventOfCode2022.ConsoleApp.Day7;
 
 namespace AdventOfCode2022.ConsoleApp
 {
@@ -11,10 +12,16 @@ namespace AdventOfCode2022.ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            RunDay6();
+            RunDay7();
             Console.ReadLine();
         }
+        private static void RunDay7()
+        {
+            Day7Tasks day7Tasks = new Day7Tasks();
+            int task1Result = day7Tasks.Task1();
 
+            Console.WriteLine($"What is the sum of the total sizes of those directories?: {task1Result}");
+        }
         private static void RunDay6()
         {
             Day6Tasks day6Tasks = new Day6Tasks();
