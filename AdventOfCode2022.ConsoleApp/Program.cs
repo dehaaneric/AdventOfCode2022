@@ -19,8 +19,11 @@ namespace AdventOfCode2022.ConsoleApp
         {
             Day7Tasks day7Tasks = new Day7Tasks();
             int task1Result = day7Tasks.Task1();
-
             Console.WriteLine($"What is the sum of the total sizes of those directories?: {task1Result}");
+
+            int task2Result = day7Tasks.Task2();
+            Console.WriteLine($"What is the total size of that directory?: {task2Result}");
+
         }
         private static void RunDay6()
         {

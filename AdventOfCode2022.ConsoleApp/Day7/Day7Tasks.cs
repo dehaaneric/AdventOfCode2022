@@ -5,13 +5,57 @@ namespace AdventOfCode2022.ConsoleApp.Day7
 {
     public class Day7Tasks : BaseTask
     {
+        const int SpaceOnSystem = 70_000_000;
+        const int SpaceRequired = 30_000_000;
+
+        AOC.Directory baseDir = new AOC.Directory(0, "/");
+        List<int> _directoriesCollection = new List<int>();
+
+        public Day7Tasks()
+        {
+            ReadFileSystem();
+            FillDirectoriesCollection(baseDir, Int32.MaxValue);
+        }
         public int Task1()
+        {
+            return _directoriesCollection.Where(x => x <= 100000).Sum(x => x);
+        }
+
+        public int Task2()
+        {
+            int totalSpaceInUse = GetTotalSizeInUse(baseDir);
+            int unusedSpace = SpaceOnSystem - totalSpaceInUse;
+            int needed = SpaceRequired - unusedSpace;
+
+            // 21_618_835
+            foreach (var directorySize in _directoriesCollection.OrderBy(x => x))
+            {
+                if((directorySize + unusedSpace) >= SpaceRequired)
+                {
+                    return directorySize;
+                }
+            }
+            
+            return 0;
+        }
+
+        private int GetTotalSizeInUse(AOC.Directory directory)
+        {
+            int totalSpaceInUse = directory.TotalSizeOfFiles;
+            foreach (var dir in directory.SubDirectories)
+            {
+                totalSpaceInUse += GetTotalSizeInUse(dir);
+            }
+
+            return totalSpaceInUse;
+        }
+
+        private void ReadFileSystem()
         {
             string[] commands = base.GetInput("Day7/Day7Input1.txt");
 
             Stack<AOC.Directory> directoryStack = new Stack<AOC.Directory>();
 
-            var baseDir = new AOC.Directory(0, "/");
             AOC.Directory currentDir = null!;
 
             for (int lineIndex = 0; lineIndex < commands.Length; lineIndex++)
@@ -47,27 +91,21 @@ namespace AdventOfCode2022.ConsoleApp.Day7
                     }
                 }
             }
-
-            List<int> directorySizes = new List<int>();
-            FindDirectoriesRecursive(baseDir, Int32.MaxValue, directorySizes);
-
-            int sum = directorySizes.Where(x => x <= 100000).Sum(x => x);
-            return sum;
         }
 
         Dictionary<string, int> directoryCounts = new Dictionary<string, int>();
-        private void FindDirectoriesRecursive(AOC.Directory dir, int limit, List<int> foundDirectories)
+        private void FillDirectoriesCollection(AOC.Directory dir, int limit)
         {
-            directoryCounts.Add(Guid.NewGuid().ToString(), dir.TotalFilesSize);
+            directoryCounts.Add(Guid.NewGuid().ToString(), dir.TotalFilesAndDirSize);
 
-            if (dir.TotalFilesSize < limit)
+            if (dir.TotalFilesAndDirSize < limit)
             {
-                foundDirectories.Add(dir.TotalFilesSize);
+                _directoriesCollection.Add(dir.TotalFilesAndDirSize);
             }
 
             foreach (var subdir in dir.SubDirectories)
             {
-                FindDirectoriesRecursive(subdir, limit, foundDirectories);
+                FillDirectoriesCollection(subdir, limit);
             }
         }
 

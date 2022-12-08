@@ -23,7 +23,9 @@
         }
         public IEnumerable<Directory> SubDirectories => _subDirectories;
 
-        public int TotalFilesSize => _files.Sum(x => x.FileSize) + _subDirectories.Sum(x=>x.TotalFilesSize);
+        public int TotalFilesAndDirSize => _files.Sum(x => x.FileSize) + _subDirectories.Sum(x=>x.TotalFilesAndDirSize);
+        public int TotalSizeOfFiles => _files.Sum(x => x.FileSize);
+        
         //public int TotalFilesSize
         //{
         //    get
