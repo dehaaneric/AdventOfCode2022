@@ -5,6 +5,7 @@ using AdventOfCode2022.ConsoleApp.Day4;
 using AdventOfCode2022.ConsoleApp.Day5;
 using AdventOfCode2022.ConsoleApp.Day6;
 using AdventOfCode2022.ConsoleApp.Day7;
+using AdventOfCode2022.ConsoleApp.Day8;
 
 namespace AdventOfCode2022.ConsoleApp
 {
@@ -12,9 +13,20 @@ namespace AdventOfCode2022.ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            RunDay7();
+            RunDay8();
             Console.ReadLine();
         }
+
+        private static void RunDay8()
+        {
+            Day8Tasks day8Tasks = new Day8Tasks();
+            var visibleTreeCount = day8Tasks.Task1();
+            Console.WriteLine($"How many trees are visible from outside the grid?: {visibleTreeCount}");
+
+            var score = day8Tasks.Task2();
+            Console.WriteLine($"What is the highest scenic score possible for any tree?: {score}");
+        }
+
         private static void RunDay7()
         {
             Day7Tasks day7Tasks = new Day7Tasks();
